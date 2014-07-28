@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ myuser.user.username}}'s Profile</h1>
+<input type="hidden" id="userid" value={{myuser.user.id}} />
+<p> Name:
+{{myuser.name}}
+</p>
+<p> Description: 
+{{myuser.description}}
+</p>
+
+<p>
+
+{% if user.is_authenticated %}
+{% csrf_token %}
+		This profile has <a id="likes">{{myuser.like_number}}</a> likes, wow!
+        <input type="button" id="like" value="Like"/>
+
+{% endif %}
+</p>
+{% endblock %}

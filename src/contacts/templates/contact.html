@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{user.username}}'s Profile</h1>
+
+
+
+<p id="Name"> Name: 
+{{ myuser.name }} 
+</p>
+
+<p> Description: 
+{{myuser.description}}
+</p>
+
+<p>
+	{% for like in myuser.like %}
+		<a>{{like.user.username}}</a>
+	{% endfor %}
+</p>
+<p>
+
+{% if user.is_authenticated %}
+{% csrf_token %}
+		Your profile has <a id="likes">{{myuser.like_number}}</a> likes, wow!
+</div>
+
+{% endif %}
+</p>
+<a href="{% url "profiles_edit_profile" pk=user.id%}">Edit Profile</a>
+{% endblock %}
